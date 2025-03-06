@@ -1,0 +1,31 @@
+name: flutter_task_cubit
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  build_runner: ^2.4.15
+  flutter:
+    sdk: flutter
+  objectbox: ^4.1.0
+  objectbox_flutter_libs: ^4.1.0
+  objectbox_generator: ^4.1.0
+  path_provider: ^2.1.5
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+objectbox:
+  output_directory: database;
+  model_directory: lib/models;
+  model_files:
+    - lib/models/task.dart;
+
+flutter:
+  uses-material-design: true
