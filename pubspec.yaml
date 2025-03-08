@@ -13,6 +13,7 @@ dependencies:
   objectbox: ^4.1.0
   objectbox_flutter_libs: ^4.1.0
   objectbox_generator: ^4.1.0
+  path: ^1.9.1
   path_provider: ^2.1.5
   provider: ^6.1.2
 
@@ -21,11 +22,10 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+  #object_box
 objectbox:
-  output_directory: database;
-  model_directory: lib/models;
-  model_files:
-    - lib/models/task.dart;
+  output_dir: database
+
 
 flutter:
   uses-material-design: true

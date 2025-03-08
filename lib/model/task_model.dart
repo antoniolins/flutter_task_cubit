@@ -3,8 +3,8 @@ import 'package:objectbox/objectbox.dart';
 
 
 @Entity()
-
 class Task {
+    @Id()
     int id = 0;
 
     String? title;
@@ -12,7 +12,7 @@ class Task {
     
   Task({
     this.id = 0 ,
-    this.title,
+    this.title = '',
     this.isCompleted = false,
   });
   

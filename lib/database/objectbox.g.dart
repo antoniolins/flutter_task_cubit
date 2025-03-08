@@ -6,6 +6,7 @@
 // ignore_for_file: camel_case_types, depend_on_referenced_packages
 // coverage:ignore-file
 
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flat_buffers/flat_buffers.dart' as fb;
@@ -14,29 +15,29 @@ import 'package:objectbox/internal.dart'
 import 'package:objectbox/objectbox.dart' as obx;
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'model/task_model.dart';
+import '../model/task_model.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(1, 283932359774975290),
+      id: const obx_int.IdUid(1, 2979536779406566748),
       name: 'Task',
-      lastPropertyId: const obx_int.IdUid(3, 937801758297988251),
+      lastPropertyId: const obx_int.IdUid(3, 5828508086263464925),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 3920362221492511131),
+            id: const obx_int.IdUid(1, 6334358519297544989),
             name: 'id',
             type: 6,
             flags: 1),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 4628363520208434281),
+            id: const obx_int.IdUid(2, 4397481061571564197),
             name: 'title',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 937801758297988251),
+            id: const obx_int.IdUid(3, 5828508086263464925),
             name: 'isCompleted',
             type: 1,
             flags: 0)
@@ -56,7 +57,7 @@ final _entities = <obx_int.ModelEntity>[
 /// For Flutter apps, also calls `loadObjectBoxLibraryAndroidCompat()` from
 /// the ObjectBox Flutter library to fix loading the native ObjectBox library
 /// on Android 6 and older.
-Future<obx.Store> openStore(
+Future<obx.Store> openStore(Directory docsDir, 
     {String? directory,
     int? maxDBSizeInKB,
     int? maxDataSizeInKB,
@@ -80,7 +81,7 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(1, 283932359774975290),
+      lastEntityId: const obx_int.IdUid(1, 2979536779406566748),
       lastIndexId: const obx_int.IdUid(0, 0),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),

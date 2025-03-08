@@ -11,7 +11,9 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final taskviewmodel = Provider.of<TaskViewModel>(context);
-    Future<List<Task>> _tasksFuture = taskviewmodel.getAllTasks();
+
+
+    Future<List<Task>> _tasksFuture = taskviewmodel.getTasks();
 
 
     TextEditingController _controller = TextEditingController(text: '');
@@ -76,7 +78,6 @@ class TaskScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  taskviewmodel.removeTask(task);
                                 },
                                 icon: const Icon(
                                   Icons.delete,

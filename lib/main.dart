@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_cubit/provaiders.dart';
+import 'package:flutter_task_cubit/database/injectboxdatabase.dart';
 
+import 'package:flutter_task_cubit/services/task_local_repository.dart';
 
+import 'package:flutter_task_cubit/taskviewmodel/taskviewmodel.dart';
 import 'package:flutter_task_cubit/view/task_screen.dart';
 import 'package:provider/provider.dart';
+
+
 
 
 // ignore: depend_on_referenced_packages
@@ -13,31 +17,48 @@ import 'package:provider/provider.dart';
 // -----------------------------------------------------
 
 
+late ObjectBox objectboxDB;
 
-void main() async {
+Future <void> main() async {  
 
+    WidgetsFlutterBinding.ensureInitialized();
+     objectboxDB = await ObjectBox.init();
 
-   WidgetsFlutterBinding.ensureInitialized();
-
-
-  runApp(
-
-    MultiProvider(
-      providers: providers,
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
 
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: TaskScreen(),
-    );
+    return MultiProvider(
+      providers: [
+          Provider<ObjectBox>(
+         create: (context) => objectboxDB,
+ 
+       ),
+
+        ChangeNotifierProvider<TaskViewModel>(
+
+          create: (context) => TaskViewModel(repository: TaskLocalRepository()),
+          
+          ),       
+        
+      ],
+      child: MaterialApp(
+        title: 'Task App',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+        ),
+        home: const TaskScreen(),
+      ),
+    );  
   }
 }
+
+
+
